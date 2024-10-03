@@ -21,3 +21,13 @@ The intent of this repo is to demonstrate how to manage Cloudflare configuration
   │   └── team2.auto.tfvars
   └── README.md
 ```
+
+### Commands
+
+#### Verify Validity of API Token
+```
+curl -X GET "https://api.cloudflare.com/client/v4/accounts/<account_id>/tokens/verify" \
+     -H "Authorization: Bearer <api_token>" \
+     -H "Content-Type:application/json"
+
+```
