@@ -1,11 +1,28 @@
 # This file describes the variable data types essentially and the .tfvars files store the variable values
+variable "zone" {
+  description = "The Domain used: kashyapvijay.com" 
+  type        = string
+}
+
 variable "zone_id" {
   description = "The Cloudflare Zone ID"
   type        = string
 }
 
-variable "cloudflare_api_token" {
+variable "account_id" {
+  description = "Account ID for your Cloudflare account"
+  type        = string
+  sensitive   = true
+}
+
+variable "api_token" {
   description = "Cloudflare API token"
+  type        = string
+  sensitive = true
+}
+
+variable "app_id" {
+  description = "The Access Application ID"
   type        = string
 }
 
