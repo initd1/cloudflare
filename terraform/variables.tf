@@ -15,6 +15,16 @@ variable "account_id" {
   sensitive   = true
 }
 
+variable "subdomain" {
+  description = "Sub domain to be used for internal tunnel"
+  type = string
+}
+
+variable "tunnel_name" {
+  description = "Name of self-hosted tunnel"
+  type = string
+  
+}
 variable "api_token" {
   description = "Cloudflare API token"
   type        = string
