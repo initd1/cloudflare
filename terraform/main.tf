@@ -76,7 +76,8 @@ resource "cloudflare_zero_trust_access_group" "geo_policy" {
   name       = var.geo_policy_name
 
   include {
-    geo = [ au, in ]
+    # Allow access only from Australia and India
+    geo = [ "au", "in" ]
   }
 }
 
