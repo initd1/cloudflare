@@ -51,5 +51,13 @@ variable "waf_description" {
   type        = string
 }
 
+variable "geo_policy_name" {
+  description = "Policy that applies geo restriction for access"
+  type = string
+}
 
+variable "mail_policy_name" {
+  description = "Policy that applies mail restrictions"
+  type = string
+}
 
