@@ -40,4 +40,8 @@ Account  | Cloudflare Tunnel | Edit |
 Account  | Zero Trust   | Edit |
 Account  | DNS Firewall | Edit |
 Account  | Access: Apps and Policies | Edit |
+Account  | Account Firewall Access Rules | Edit |
+Account  | Access: Apps and Policies | Edit | 
+Account  | Account Firewall Access Rules | Read |
+Account  | Access: Apps and Policies | Read | 
 Zone     | DNS  | Edit |
