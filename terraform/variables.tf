@@ -36,6 +36,11 @@ variable "app_id" {
   type        = string
 }
 
+variable "application1_name" {
+  description = "Name of Application 1"
+  type = string
+}
+
 variable "waf_expression" {
   description = "WAF rule expression"
   type        = string
