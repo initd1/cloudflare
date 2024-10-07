@@ -31,3 +31,13 @@ curl -X GET "https://api.cloudflare.com/client/v4/accounts/<account_id>/tokens/v
      -H "Content-Type:application/json"
 
 ```
+
+### Permissions Required for API Token
+
+| Type | Permission | Mode | 
+| ----| ------| ----|
+Account  | Cloudflare Tunnel | Edit |
+Account  | Zero Trust   | Edit |
+Account  | DNS Firewall | Edit |
+Account  | Access: Apps and Policies | Edit |
+Zone     | DNS  | Edit |
