@@ -39,6 +39,7 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "tun1_config" {
       # }
     }
     ingress_rule {
+      # Hostname to match the incoming request with
       hostname = "kash"
       path     = "/service2"
       service  = "http://10.0.0.2:8080"
@@ -51,6 +52,8 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "tun1_config" {
       }
     }
     ingress_rule {
+      # Hostname to match the incoming request with
+      hostname = "kash"
       service = "https://10.0.0.3:8081"
       origin_request {
         connect_timeout = "2m0s"
@@ -67,15 +70,36 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "tun1_config" {
     }
 }
 
+# Allowing access to `test@example.com` email address only
+resource "cloudflare_zero_trust_access_group" "geo_policy" {
+  account_id = var.account_id
+  name       = var.geo_policy_name
+
+  include {
+    geo = [ au, in ]
+  }
+}
+
+# Allowing access to `test@example.com` email address only
+resource "cloudflare_zero_trust_access_group" "mail_policy" {
+  account_id = var.account_id
+  name       = var.mail_policy_name
+
+  include {
+    email = [ "kashyapvijayperth@gmail.com" ]
+  }
+}
+
+
 resource "cloudflare_zero_trust_access_application" "app1" {
   zone_id                   = var.zone_id
   name                      = var.application1_name
   domain                    = var.subdomain
   type                      = "self_hosted"
-  session_duration          = "24h"
+  session_duration          = "4h"
   auto_redirect_to_identity = false
-  # policies                  = [
-  #     cloudflare_access_policy.example_1.id,
-  #     cloudflare_access_policy.example_2.id
-  # ]
-} 
+  policies                  = [
+      cloudflare_zero_trust_access_group.mail_policy.id,
+      cloudflare_zero_trust_access_group.geo_policy.id
+  ]
+}
