@@ -39,7 +39,7 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "tun1_config" {
       # }
     }
     ingress_rule {
-      # hostname = "foo"
+      hostname = "kash"
       path     = "/service2"
       service  = "http://10.0.0.2:8080"
       origin_request {
@@ -60,30 +60,22 @@ resource "cloudflare_zero_trust_tunnel_cloudflared_config" "tun1_config" {
         }
       }
     }
-    # Catch-all rule
-    ingress_rules {
-      service = "http_status:404" # Respond with a 404 for unmatched requests
+    ingress_rule {
+      service = "http_status:404"
+      # hostname = "foo"
+      }
     }
-  }
 }
 
-resource "cloudflare_zero_trust_access_application" "staging_app" {
+resource "cloudflare_zero_trust_access_application" "app1" {
   zone_id                   = var.zone_id
-  name                      = "staging application"
-  domain                    = "staging.example.com"
+  name                      = var.application1_name
+  domain                    = var.subdomain
   type                      = "self_hosted"
   session_duration          = "24h"
   auto_redirect_to_identity = false
-  policies                  = [
-      cloudflare_access_policy.example_1.id,
-      cloudflare_access_policy.example_2.id
-  ]
+  # policies                  = [
+  #     cloudflare_access_policy.example_1.id,
+  #     cloudflare_access_policy.example_2.id
+  # ]
 } 
-resource "cloudflare_access_application" "internal_app" {
-  account_id = var.account_id
-  name       = "Internal Web Server"
-  domain     = "admin.kashyapvijay.com"
-  session_duration = "24h"
-
-  type = "self_hosted"
-}
