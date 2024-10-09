@@ -36,6 +36,11 @@ variable "app_id" {
   type        = string
 }
 
+variable "application1_name" {
+  description = "Name of Application 1"
+  type = string
+}
+
 variable "waf_expression" {
   description = "WAF rule expression"
   type        = string
@@ -46,5 +51,13 @@ variable "waf_description" {
   type        = string
 }
 
+variable "geo_policy_name" {
+  description = "Policy that applies geo restriction for access"
+  type = string
+}
 
+variable "mail_policy_name" {
+  description = "Policy that applies mail restrictions"
+  type = string
+}
 

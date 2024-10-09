@@ -1,0 +1,11 @@
+# Template for the tfvars file
+zone = "kashyapvijay.com"
+zone_id = "ZONEID"
+account_id = "ACCOUNTID"
+subdomain = "webserver1"
+tunnel_name = "tun1"
+api_token = "APITOKEN"
+app_id = "app1"
+application1_name = "app1"
+waf_expression = "(http.request.uri.path contains \"/secure\")"
+waf_description = "(http.request.uri.path contains \"/admin\")"
