@@ -4,8 +4,8 @@ The intent of this repo is to demonstrate how to manage Cloudflare configuration
 ## Usage
 - Check providers using `terraform providers` 
 - Initialize Terraform: Run `terraform init` in your working directory to download necessary plugins.
-- Plan Changes: Use `terraform plan` to see what changes will be made.
-- Apply Configuration: Deploy your setup with `terraform apply`.
+- Plan Changes: Use `terraform plan --var-file team1.tfvars` to see what changes will be made.
+- Apply Configuration: Deploy your setup with `terraform apply --var-file team1.tfvars`.
 
 ##  Repo structure for modularity with multiple teams being able to 'self-serve'
 ```
